@@ -5,33 +5,27 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { SongsTable } from './components/SongsTable';
 import { InvoiceHistory } from './components/InvoiceHistory';
 import { InvoiceContextProvider } from './contexts/InvoiceContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { TableSkeleton } from './components/TableSkeleton';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 5 * 1000 * 60,
-      gcTime: 10 * 60 * 1000,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      retry: 2,
-    },
-  },
-});
+const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <InvoiceContextProvider>
-      <main className="container mx-auto px-4 py-8">
-        <Suspense fallback={<div>Loading</div>}>
-          <SongsTable />
-        </Suspense>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <InvoiceContextProvider>
+        <main className="container mx-auto px-4 py-8">
+          <Suspense fallback={<TableSkeleton />}>
+            <SongsTable />
+          </Suspense>
 
-        <InvoiceHistory />
-      </main>
-    </InvoiceContextProvider>
+          <InvoiceHistory />
+        </main>
+      </InvoiceContextProvider>
 
-    <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
-  </QueryClientProvider>
+      <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;

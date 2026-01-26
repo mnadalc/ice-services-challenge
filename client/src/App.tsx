@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Suspense } from 'react';
 import { SongsTable } from './components/SongsTable';
 
 const queryClient = new QueryClient({
@@ -17,7 +18,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <main className="container mx-auto px-4 py-8">
-        <SongsTable />
+        <Suspense fallback={<div>Loading</div>}>
+          <SongsTable />
+        </Suspense>
       </main>
     </QueryClientProvider>
   );

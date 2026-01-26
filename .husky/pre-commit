@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Lint client
+cd client
+pnpm typecheck
+pnpm lint-staged
+
+# Lint server
+cd server
+pnpm build
+pnpm lint

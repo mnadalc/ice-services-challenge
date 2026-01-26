@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-cd client
-pnpm typecheck
-pnpm lint-staged

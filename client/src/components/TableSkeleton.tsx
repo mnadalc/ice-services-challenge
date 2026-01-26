@@ -1,3 +1,5 @@
+import { SongsTableHead } from './table/SongsTableHead';
+
 export function TableSkeleton({ rows = 5 }: { rows?: number }) {
   return (
     <div role="status" aria-busy="true" aria-label="Loading songs table">
@@ -17,15 +19,7 @@ export function TableSkeleton({ rows = 5 }: { rows?: number }) {
               List of songs with royalty calculation progress and invoice actions
             </caption>
 
-            <thead>
-              <tr className="border-b border-gray-700">
-                <th className="px-4 py-3 text-left text-sm font-semibold">ID</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold">Song Name</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold">Author</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold">Progress</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold">Actions</th>
-              </tr>
-            </thead>
+            <SongsTableHead />
 
             <tbody>
               {Array.from({ length: rows }).map((_, i) => (

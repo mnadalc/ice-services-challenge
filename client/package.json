@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit --pretty --project tsconfig.app.json",
-    "prepare": "husky"
+    "prepare": "cd ../ && husky client/.husky"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

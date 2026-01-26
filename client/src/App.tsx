@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { SongsTable } from './components/SongsTable';
+import { InvoiceHistory } from './components/InvoiceHistory';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,6 +22,7 @@ const App = () => {
         <Suspense fallback={<div>Loading</div>}>
           <SongsTable />
         </Suspense>
+        <InvoiceHistory />
       </main>
     </QueryClientProvider>
   );

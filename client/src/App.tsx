@@ -1,7 +1,10 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Suspense } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
 import { SongsTable } from './components/SongsTable';
 import { InvoiceHistory } from './components/InvoiceHistory';
+import { InvoiceContextProvider } from './contexts/InvoiceContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,17 +18,20 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <InvoiceContextProvider>
       <main className="container mx-auto px-4 py-8">
         <Suspense fallback={<div>Loading</div>}>
           <SongsTable />
         </Suspense>
+
         <InvoiceHistory />
       </main>
-    </QueryClientProvider>
-  );
-};
+    </InvoiceContextProvider>
+
+    <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+  </QueryClientProvider>
+);
 
 export default App;

@@ -30,9 +30,9 @@ export function SongsTable() {
       </h1>
       <div className="overflow-x-auto">
         <table
-          className="min-w-full border-collapse"
+          aria-describedby="songs-table-description"
           aria-labelledby="songs-table-heading"
-          aria-describedby="songs-table-description">
+          className="min-w-full border-collapse">
           <caption id="songs-table-description" className="sr-only">
             List of songs with royalty calculation progress and invoice actions
           </caption>
@@ -48,24 +48,23 @@ export function SongsTable() {
                   <td className="px-4 py-3 text-sm">{song.id}</td>
                   <td className="px-4 py-3 text-sm">{song.songName}</td>
                   <td className="px-4 py-3 text-sm">{song.author}</td>
-                  <td className="px-4 py-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <progress
-                        value={song.progress}
-                        max={1}
-                        className="h-2 w-20 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-bar]:bg-gray-200 [&::-webkit-progress-value]:rounded [&::-webkit-progress-value]:bg-[rgb(30,175,186)] [&::-moz-progress-bar]:bg-[rgb(30,175,186)]"
-                        aria-label={`Progress: ${formatProgress(song.progress)}`}
-                      />
-                      <span>{formatProgress(song.progress)}</span>
-                    </div>
+                  <td className="px-4 py-3 text-sm flex items-center gap-2">
+                    <progress
+                      value={song.progress}
+                      max={1}
+                      className="h-2 w-20 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-bar]:bg-gray-200 [&::-webkit-progress-value]:rounded [&::-webkit-progress-value]:bg-[rgb(30,175,186)] [&::-moz-progress-bar]:bg-[rgb(30,175,186)]"
+                      aria-label={`Progress: ${formatProgress(song.progress)}`}
+                    />
+                    <span>{formatProgress(song.progress)}</span>
                   </td>
                   <td className="px-4 py-3 text-sm">
                     <button
+                      aria-label={`Issue invoice for ${song.songName} by ${song.author}`}
+                      className="cursor-pointer rounded bg-[rgb(30,175,186)] px-3 py-1 text-sm font-medium text-white hover:bg-[rgb(20,155,166)]"
                       onClick={() =>
                         issueInvoice(song.author, song.progress, song.id, song.songName)
                       }
-                      className="cursor-pointer rounded bg-[rgb(30,175,186)] px-3 py-1 text-sm font-medium text-white hover:bg-[rgb(20,155,166)]"
-                      aria-label={`Issue invoice for ${song.songName} by ${song.author}`}>
+                      type="button">
                       Issue Invoice
                     </button>
 

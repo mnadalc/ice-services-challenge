@@ -1,0 +1,16 @@
+{
+  "name": "ice-services",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "test": "pnpm --filter client test",
+    "test:run": "pnpm --filter client test:run",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "prepare": "husky .husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

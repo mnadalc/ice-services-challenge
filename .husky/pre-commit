@@ -6,6 +6,6 @@ pnpm typecheck
 pnpm lint-staged
 
 # Lint server
-cd server
+cd ../server
 pnpm build
 pnpm lint

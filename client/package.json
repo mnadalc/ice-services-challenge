@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit --pretty --project tsconfig.app.json",
     "test": "vitest",
-    "test:run": "vitest run",
-    "prepare": "cd ../ && husky .husky"
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

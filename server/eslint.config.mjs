@@ -12,6 +12,9 @@ export default defineConfig([
       ecmaVersion: 2020,
       sourceType: 'module',
       globals: globals.node,
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     rules: {
       '@typescript-eslint/no-unused-vars': [

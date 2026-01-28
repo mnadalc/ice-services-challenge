@@ -1,5 +1,9 @@
 {
-  "name": "ice-services",
+  "name": "ice-services-code-challenge",
+  "author": {
+    "name": "Miguel Nadal",
+    "email": "mnadalc@gmail.com"
+  },
   "private": true,
   "scripts": {
     "dev": "pnpm -r --parallel dev",

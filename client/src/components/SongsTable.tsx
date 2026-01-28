@@ -44,17 +44,27 @@ export function SongsTable() {
               const issuedInvoice = lastIssuedPerSong.get(song.id);
 
               return (
-                <tr key={song.id} className="border-b border-gray-800 hover:bg-gray-300">
+                <tr key={song.id} className="border-b border-gray-200 hover:bg-gray-50">
                   <td className="px-4 py-3 text-sm">{song.id}</td>
                   <td className="px-4 py-3 text-sm">{song.songName}</td>
                   <td className="px-4 py-3 text-sm">{song.author}</td>
-                  <td className="px-4 py-3 text-sm">{formatProgress(song.progress)}</td>
+                  <td className="px-4 py-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <progress
+                        value={song.progress}
+                        max={1}
+                        className="h-2 w-20 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-bar]:bg-gray-200 [&::-webkit-progress-value]:rounded [&::-webkit-progress-value]:bg-[rgb(30,175,186)] [&::-moz-progress-bar]:bg-[rgb(30,175,186)]"
+                        aria-label={`Progress: ${formatProgress(song.progress)}`}
+                      />
+                      <span>{formatProgress(song.progress)}</span>
+                    </div>
+                  </td>
                   <td className="px-4 py-3 text-sm">
                     <button
                       onClick={() =>
                         issueInvoice(song.author, song.progress, song.id, song.songName)
                       }
-                      className="rounded bg-blue-600 px-3 py-1 text-sm font-medium text-white hover:bg-blue-700"
+                      className="cursor-pointer rounded bg-[rgb(30,175,186)] px-3 py-1 text-sm font-medium text-white hover:bg-[rgb(20,155,166)]"
                       aria-label={`Issue invoice for ${song.songName} by ${song.author}`}>
                       Issue Invoice
                     </button>

@@ -41,7 +41,7 @@ export function InvoiceHistory() {
             </caption>
 
             <thead>
-              <tr className="border-b border-gray-700">
+              <tr className="border-b border-gray-200">
                 <th className="px-4 py-3 text-left text-sm font-semibold">Date</th>
                 <th className="px-4 py-3 text-left text-sm font-semibold">Song Name</th>
                 <th className="px-4 py-3 text-left text-sm font-semibold">Author</th>
@@ -51,11 +51,21 @@ export function InvoiceHistory() {
 
             <tbody>
               {sortedInvoices.map((invoice) => (
-                <tr key={invoice.id} className="border-b border-gray-800 hover:bg-gray-300">
+                <tr key={invoice.id} className="border-b border-gray-200 hover:bg-gray-50">
                   <td className="px-4 py-3 text-sm">{formatDate(invoice.issuedAt)}</td>
                   <td className="px-4 py-3 text-sm">{invoice.songName}</td>
                   <td className="px-4 py-3 text-sm">{invoice.author}</td>
-                  <td className="px-4 py-3 text-sm">{formatProgress(invoice.progress)}</td>
+                  <td className="px-4 py-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <progress
+                        value={invoice.progress}
+                        max={1}
+                        className="h-2 w-20 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-bar]:bg-gray-200 [&::-webkit-progress-value]:rounded [&::-webkit-progress-value]:bg-[rgb(30,175,186)] [&::-moz-progress-bar]:bg-[rgb(30,175,186)]"
+                        aria-label={`Progress: ${formatProgress(invoice.progress)}`}
+                      />
+                      <span>{formatProgress(invoice.progress)}</span>
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>

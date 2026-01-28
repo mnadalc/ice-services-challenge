@@ -23,7 +23,7 @@ export function TableSkeleton({ rows = 5 }: { rows?: number }) {
 
             <tbody>
               {Array.from({ length: rows }).map((_, i) => (
-                <tr key={i} className="border-b border-gray-800">
+                <tr key={i} className="border-b border-gray-200">
                   <td className="px-4 py-3">
                     <div className="h-4 w-8 animate-pulse rounded bg-gray-300" />
                   </td>
